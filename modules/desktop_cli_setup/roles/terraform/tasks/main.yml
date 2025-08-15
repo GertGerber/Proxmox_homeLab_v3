@@ -1,18 +1,17 @@
 ---
-- name: Download HashiCorp GPG key
-  ansible.builtin.get_url:
+- name: Add HashiCorp GPG key
+  ansible.builtin.apt_key:
     url: https://apt.releases.hashicorp.com/gpg
-    dest: /usr/share/keyrings/hashicorp-archive-keyring.gpg
-    mode: '0644'
+    state: present
 
-- name: Add HashiCorp repository
+- name: Add HashiCorp APT repository
   ansible.builtin.apt_repository:
-    repo: "deb [arch={{ ansible_architecture }} signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com {{ ansible_distribution_release | lower }} main"
+    repo: deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main
     state: present
     filename: hashicorp
-    update_cache: yes
 
 - name: Install Terraform
   ansible.builtin.apt:
     name: terraform
-    state: latest
+    state: present
+    update_cache: yes
