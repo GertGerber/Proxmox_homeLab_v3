@@ -30,14 +30,14 @@ echo "🔐 Enter your GitHub Personal Access Token (will not be displayed):"
 read -rs GITHUB_TOKEN
 echo
 
-# 5. Clone the repository
-REPO_URL="https://github.com/YOUR_USER/Proxmox_homeLab_v3.git"
-TARGET_DIR="$HOME/Proxmox_homeLab_v3"
+# 5. Clone the repository (always your repo)
+REPO_URL="https://${GITHUB_TOKEN}@github.com/GertGerber/Proxmox_homeLab_v3.git"
+TARGET_DIR="$HOME/Github/Proxmox_homeLab_v3"
 
 if [ -d "$TARGET_DIR" ]; then
     echo -e "${GREEN}[OK] Repository already exists at $TARGET_DIR.${NC}"
 else
-    echo -e "${GREEN}[*] Cloning repository...${NC}"
+    echo -e "${GREEN}[*] Cloning repository from your GitHub...${NC}"
     git clone "$REPO_URL" "$TARGET_DIR"
 fi
 
