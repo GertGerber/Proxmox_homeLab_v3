@@ -1,3 +1,9 @@
+#####################################################################
+# File: Proxmox_homeLab_v3/modules/desktop_cli_setup/bootstrap.sh
+# Purpose: Bootstrap script for Proxmox HomeLab v3 Desktop CLI Setup
+# Version: 0.0.1
+#####################################################################
+
 #!/bin/bash
 set -euo pipefail
 

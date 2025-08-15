@@ -1,3 +1,10 @@
+#####################################################################
+# File: Proxmox_homeLab_v3/modules/desktop_cli_setup/group_vars/all.yml
+# Purpose: Default variables for desktop CLI setup    
+# Version: 0.0.1  
+#####################################################################
+
+
 ---
 # Defaults (overridden by interactive prompts)
 

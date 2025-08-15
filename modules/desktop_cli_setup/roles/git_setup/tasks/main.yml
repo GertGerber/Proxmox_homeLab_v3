@@ -1,17 +1,21 @@
+#####################################################################
+# File: Proxmox_homeLab_v3/modules/desktop_cli_setup/roles/git_setup/tasks/main.yml
+# Purpose: Configure Git settings for the user
+# Version: 0.0.1
+#####################################################################
+
 ---
 - name: Configure Git user name
   community.general.git_config:
     name: user.name
     value: "{{ git_user_name }}"
     scope: global
-    changed_when: false # Prevent reporting a change if the value was already set
 
 - name: Configure Git user email
   community.general.git_config:
     name: user.email
     value: "{{ git_user_email }}"
     scope: global
-    changed_when: false # Prevent reporting a change if the value was already set
 
 - name: Set default branch to main
   community.general.git_config:

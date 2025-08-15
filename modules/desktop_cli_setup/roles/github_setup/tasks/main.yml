@@ -1,3 +1,9 @@
+#####################################################################
+# File: Proxmox_homeLab_v3/modules/desktop_cli_setup/roles/github_setup/tasks/main.yml
+# Purpose: Configure GitHub CLI settings for the user
+# Version: 0.0.1
+#####################################################################
+
 ---
 - name: Ensure GitHub config directory exists
   ansible.builtin.file:

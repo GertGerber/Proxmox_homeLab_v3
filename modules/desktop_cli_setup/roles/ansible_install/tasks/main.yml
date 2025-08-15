@@ -1,3 +1,9 @@
+#####################################################################
+# File: Proxmox_homeLab_v3/modules/desktop_cli_setup/roles/ansible_install/tasks/main.yml
+# Purpose: Install Ansible on the system
+# Version: 0.0.1
+#####################################################################
+
 ---
 - name: Check if ansible is installed
   ansible.builtin.command: ansible --version
@@ -16,3 +22,9 @@
     state: present
     update_cache: yes
   when: ansible_check.rc != 0
+
+- name: Ensure community.general collection is installed
+  ansible.builtin.command: ansible-galaxy collection install community.general
+  args:
+    creates: /root/.ansible/collections/ansible_collections/community/general
+

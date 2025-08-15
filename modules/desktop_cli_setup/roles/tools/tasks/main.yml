@@ -1,3 +1,9 @@
+#####################################################################
+# File: Proxmox_homeLab_v3/modules/desktop_cli_setup/roles/tools/tasks/main.yml
+# Purpose: Install essential tools for the desktop CLI setup
+# Version: 0.0.1
+#####################################################################
+
 ---
 - name: Update apt cache
   ansible.builtin.apt:

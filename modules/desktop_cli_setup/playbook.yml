@@ -1,3 +1,9 @@
+#####################################################################
+# File: Proxmox_homeLab_v3/modules/desktop_cli_setup/playbook.yml
+# Purpose: Main playbook for setting up desktop CLI environment
+# Version: 0.0.1
+#####################################################################
+
 ---
 - name: Setup Desktop Environment
   hosts: local
