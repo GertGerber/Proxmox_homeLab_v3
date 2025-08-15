@@ -2,7 +2,7 @@
 
 On a fresh desktop:
 
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/YOUR_USER/Proxmox_homeLab_v3/main/modules/desktop_cli_setup/bootstrap.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/GertGerber/Proxmox_homeLab_v3/main/modules/desktop_cli_setup/bootstrap.sh)"
 
 
 This will:
