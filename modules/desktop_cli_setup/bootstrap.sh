@@ -48,8 +48,26 @@ else
 fi
 
 # 6. Run the Ansible playbook with provided values
+set +e
 cd "$TARGET_DIR/modules/desktop_cli_setup"
 ansible-playbook playbook.yml \
     --extra-vars "git_user_name='$GIT_NAME' git_user_email='$GIT_EMAIL' github_token='$GITHUB_TOKEN'"
+set -e
+
+# 7. Copy the menu script to the home directory
+echo -e "${GREEN}[*] Copying menu script to home directory...${NC}"
+cp "$TARGET_DIR/run.sh" "$HOME/run.sh"
+chmod +x "$HOME/run.sh" 
+echo -e "${GREEN}[OK] Menu script copied to $HOME/run.sh.${NC}"
+
+# 8. Prompt to run the menu script
+echo -e "${CYAN}To run the menu, execute: ${GREEN}bash $HOME/run.sh${NC}"
+echo -e "${CYAN}Or run it directly: ${GREEN}./run.sh${NC}"
+echo -e "${CYAN}You can also create a desktop shortcut for easy access.${NC}"
+
+# 9. Final message
+echo -e "${CYAN}=== Bootstrap Complete! ===${NC}"
+echo -e "${GREEN}Enjoy your Proxmox HomeLab v3 setup!${NC}"
+echo -e "${CYAN}For more information, visit: https://github.com/GertGerber/Proxmox_homeLab_v3${NC}"
 
 echo -e "${CYAN}=== Setup Complete! ===${NC}"
