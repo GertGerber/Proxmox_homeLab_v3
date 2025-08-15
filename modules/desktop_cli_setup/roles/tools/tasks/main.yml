@@ -1,0 +1,39 @@
+---
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Install essential tools
+  ansible.builtin.apt:
+    name:
+      - git
+      - curl
+      - jq
+      - whiptail
+      - dialog
+      - unzip
+      - gpg
+      - sshpass
+      - wget
+      - gnupg
+      - software-properties-common
+      - gh
+      - python3
+      - python3-pip
+      - python3-venv
+      - make
+      - htop
+      - ncdu
+      - net-tools
+      - bat
+      - ripgrep
+      - fzf
+      - tmux
+      - neofetch
+    state: present
+
+- name: Install latest yq
+  ansible.builtin.get_url:
+    url: https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+    dest: /usr/local/bin/yq
+    mode: '0755'

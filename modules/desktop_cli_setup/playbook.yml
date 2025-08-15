@@ -1,0 +1,26 @@
+---
+- name: Setup Desktop Environment
+  hosts: local
+  become: true
+  gather_facts: true
+
+  vars_prompt:
+    - name: git_user_name
+      prompt: "👤 Enter your Git user name"
+      private: no
+
+    - name: git_user_email
+      prompt: "📧 Enter your Git email address"
+      private: no
+
+    - name: github_token
+      prompt: "🔐 Enter your GitHub Personal Access Token"
+      private: yes
+
+  roles:
+    - tools
+    - ansible_install
+    - packer
+    - terraform
+    - git_setup
+    - github_setup

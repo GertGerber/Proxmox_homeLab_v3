@@ -1,0 +1,5 @@
+---
+# Defaults (overridden by interactive prompts)
+git_user_name: ""
+git_user_email: ""
+github_token: ""

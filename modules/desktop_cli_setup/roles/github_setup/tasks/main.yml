@@ -1,0 +1,19 @@
+---
+- name: Ensure GitHub config directory exists
+  ansible.builtin.file:
+    path: "{{ lookup('env','HOME') }}/.config/gh"
+    state: directory
+    mode: '0700'
+
+- name: Save GitHub token
+  ansible.builtin.copy:
+    dest: "{{ lookup('env','HOME') }}/.config/gh/token.txt"
+    content: "{{ github_token }}"
+    mode: '0600'
+
+- name: Authenticate GitHub CLI with token
+  ansible.builtin.shell: gh auth login --with-token < "{{ lookup('env','HOME') }}/.config/gh/token.txt"
+  register: gh_auth
+  changed_when: "'Logged in' in gh_auth.stdout or 'already logged in' in gh_auth.stdout"
+  args:
+    executable: /bin/bash

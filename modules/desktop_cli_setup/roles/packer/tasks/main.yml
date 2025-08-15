@@ -1,0 +1,29 @@
+---
+- name: Get latest Packer version metadata
+  ansible.builtin.uri:
+    url: https://checkpoint-api.hashicorp.com/v1/check/packer
+    return_content: yes
+  register: packer_meta
+
+- name: Set Packer facts
+  ansible.builtin.set_fact:
+    packer_version: "{{ packer_meta.json.current_version }}"
+    packer_url: "https://releases.hashicorp.com/packer/{{ packer_meta.json.current_version }}/packer_{{ packer_meta.json.current_version }}_linux_amd64.zip"
+
+- name: Download Packer
+  ansible.builtin.get_url:
+    url: "{{ packer_url }}"
+    dest: /tmp/packer.zip
+    mode: '0644'
+
+- name: Unzip Packer binary to /usr/local/bin
+  ansible.builtin.unarchive:
+    src: /tmp/packer.zip
+    dest: /usr/local/bin/
+    remote_src: yes
+
+- name: Ensure packer binary is executable
+  ansible.builtin.file:
+    path: /usr/local/bin/packer
+    mode: '0755'
+    state: file

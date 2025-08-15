@@ -1,0 +1,36 @@
+---
+- name: Configure Git user name
+  ansible.builtin.git_config:
+    name: user.name
+    value: "{{ git_user_name }}"
+    scope: global
+
+- name: Configure Git user email
+  ansible.builtin.git_config:
+    name: user.email
+    value: "{{ git_user_email }}"
+    scope: global
+
+- name: Set default branch to main
+  ansible.builtin.git_config:
+    name: init.defaultBranch
+    value: main
+    scope: global
+
+- name: Set pull.rebase to false
+  ansible.builtin.git_config:
+    name: pull.rebase
+    value: "false"
+    scope: global
+
+- name: Set credential helper to store
+  ansible.builtin.git_config:
+    name: credential.helper
+    value: store
+    scope: global
+
+- name: Set default editor to nano
+  ansible.builtin.git_config:
+    name: core.editor
+    value: nano
+    scope: global

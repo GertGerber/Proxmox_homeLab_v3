@@ -1,0 +1,28 @@
+---
+- name: Get latest Terraform version metadata
+  ansible.builtin.uri:
+    url: https://checkpoint-api.hashicorp.com/v1/check/terraform
+    return_content: yes
+  register: tf_meta
+
+- name: Set Terraform facts
+  ansible.builtin.set_fact:
+    terraform_url: "{{ tf_meta.json.current_download_url }}"
+
+- name: Download Terraform
+  ansible.builtin.get_url:
+    url: "{{ terraform_url }}"
+    dest: /tmp/terraform.zip
+    mode: '0644'
+
+- name: Unzip Terraform binary to /usr/local/bin
+  ansible.builtin.unarchive:
+    src: /tmp/terraform.zip
+    dest: /usr/local/bin/
+    remote_src: yes
+
+- name: Ensure terraform binary is executable
+  ansible.builtin.file:
+    path: /usr/local/bin/terraform
+    mode: '0755'
+    state: file
