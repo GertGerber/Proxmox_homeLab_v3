@@ -1,0 +1,13 @@
+services:
+  plextraktsync:
+    image: ghcr.io/taxel/plextraktsync
+    command: watch
+    container_name: plextraktsync
+
+    restart: on-failure:2
+    volumes:
+      - $DOCKERFOLDER/appdata/plextraksync/config:/app/config
+    environment:
+      # - PUID=1000
+      # - PGID=1000
+      - TZ=Pacific/Auckland

@@ -1,0 +1,10 @@
+services:
+  plextraktsync:
+    image: ghcr.io/taxel/plextraktsync
+    command: watch
+    container_name: plextraktsync
+    restart: unless-stopped
+    volumes:
+      - $DOCKERFOLDER/appdata/plextraksync/config:/app/config
+    environment:
+      - TZ=Pacific/Auckland

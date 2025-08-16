@@ -1,0 +1,20 @@
+servers:
+  default:
+    token: null
+    urls:
+    - null
+    - null
+    id: null
+    config: null
+  LXC:
+    token: ryubPJwdA1b7_3QKtpyg
+    urls:
+    - https://192-168-88-90.8477bbead1ed4e5aaba36fb87728d161.plex.direct:32400
+    - http://192.168.88.90:32400
+    - https://203-211-106-173.8477bbead1ed4e5aaba36fb87728d161.plex.direct:32400
+    - http://203.211.106.173:32400
+    - https://172-105-115-152.8477bbead1ed4e5aaba36fb87728d161.plex.direct:8443
+    - http://172.105.115.152:8443
+    - http://172.18.0.1:32400
+    id: 7a772b725826cc63748221bc6b592befa5c75878
+    config: null
