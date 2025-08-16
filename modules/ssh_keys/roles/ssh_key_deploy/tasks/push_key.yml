@@ -1,0 +1,6 @@
+---
+- name: Add public key to authorized_keys
+  ansible.posix.authorized_key:
+    user: "{{ ansible_user }}" # Or specify a different user if needed
+    state: present
+    key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_ed25519.pub') }}"

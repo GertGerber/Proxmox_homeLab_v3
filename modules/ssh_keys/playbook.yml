@@ -1,0 +1,12 @@
+---
+- name: Generate SSH key and deploy to servers
+  hosts: all
+  become: true
+  gather_facts: false
+
+  roles:
+    - role: ssh_key_deploy
+      tasks_from: generate_key.yml
+
+    - role: ssh_key_deploy
+      tasks_from: push_key.yml

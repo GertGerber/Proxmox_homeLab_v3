@@ -1,0 +1,5 @@
+---
+ssh_key_user: "{{ ansible_user }}"
+ssh_key_path: "/home/{{ ssh_key_user }}/.ssh/id_ed25519"
+ssh_key_type: "ed25519"
+ssh_key_comment: "ansible@{{ inventory_hostname }}"

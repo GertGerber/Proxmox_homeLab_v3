@@ -1,0 +1,14 @@
+all:
+  hosts:
+    proxmox_server1:
+      ansible_host: 192.168.88.250
+      ansible_user: root   # Change to your SSH user
+      ansible_password: Fluffy@121514  # Change to your SSH password
+      ssh_key_user: root  # Change to your SSH user
+      ssh_key_path: "{{ ssh_key_user }}/.ssh/id_ed25519"  # Change to your SSH key path
+    test01:
+      ansible_host: 192.168.88.119  # Change to your SSH user
+      ansible_user: root  # Change to your SSH user
+      ansible_password: Fluffy@121514  # Change to your SSH password
+      ssh_key_user: root  # Change to your SSH user
+      ssh_key_path: "{{ ssh_key_user }}/.ssh/id_ed25519"  # Change to your SSH key path

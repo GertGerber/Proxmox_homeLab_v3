@@ -1,0 +1,11 @@
+---
+- name: Create ssh-client-keypair for each client
+  openssh_keypair:
+    path: "{{ lookup('env','HOME') + '/.ssh/id_ed25519' }}"
+    comment: {{ inventory_hostname }}
+    type: ed25519
+    state: present
+  delegate_to: localhost
+  run_once: true
+  register: generated_key
+
